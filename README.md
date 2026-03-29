@@ -331,11 +331,12 @@ Correspondence: lucas.franca@northumbria.ac.uk
 
 ---
 
-## 🤖 Related Tools
+## 🤝 Related Tools
 
-This pipeline was developed alongside:
+This pipeline was developed alongside other open tools from the Circadia Lab:
 
-- 🌙 [**Sleep Diaries**](https://github.com/circadia-bio/SleepDiaries) — an open-source React Native sleep diary app for consensus-based sleep data collection (iOS, Android, web)
+- ⚡ [**ACTT_validation_study**](https://github.com/circadia-bio/ACTT_validation_study) — R/Quarto pipeline validating the ActTrust® device for energy expenditure estimation and PA classification; provides the cut-points and regression equations used with the same device
+- 🌙 [**Sleep Diaries**](https://github.com/circadia-bio/SleepDiaries) — open-source React Native sleep diary app for consensus-based sleep data collection (iOS, Android, web)
 - 🔬 [**circadia-bio**](https://github.com/circadia-bio) — the Circadia Lab GitHub organisation
 
 ---
