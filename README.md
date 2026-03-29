@@ -65,7 +65,21 @@ Notably, **64% of PLR-non-reactive individuals** (23 of 36) fell in the HCS grou
 
 ## 📚 Data Dictionary
 
-All metrics below are extracted from wrist actigraphy using `pyActigraphy`. The device (ActTrust 1, Condor Instruments) records activity, ambient light, and skin temperature.
+### 🗃️ Raw Data Sources
+
+| Source | Description | Format |
+|--------|-------------|--------|
+| **Wrist actigraphy** | Participants wore an **ActTrust 1** device (Condor Instruments, São Paulo, Brazil) on the non-dominant wrist continuously for four weeks. The device simultaneously records **triaxial wrist activity** (counts/epoch), **ambient light exposure** (lux), and **peripheral skin temperature** (°C) at a fixed epoch resolution. Raw files follow the naming pattern `*_LogTAT_conferido.txt`. Valid days required ≥ 16 h of wear. | `.txt` (tab-delimited) |
+| **Off-wrist mask database** | A manually curated CSV listing the participant ID and time intervals during which the device was removed (bathing, high-impact activities). Applied before any metric computation in notebook 2. | `.csv` |
+| **Pupillary Light Reflex (PLR)** | Binary classification (reactive / non-reactive) based on pupillary constriction to a 600-lumen white LED flashlight assessed in a darkened room. Used as a proxy for intact ipRGC-mediated non-image-forming photoreception. Stored as a column in the participant metadata table: `1 = reactive`, `0 = non-reactive`. | Column in participant spreadsheet |
+| **Geospatial data** | Official municipal boundary polygons for Brazil and Rio Grande do Norte, accessed via the `geobr` package (source: IBGE). Municipality polygon centroids used as geographic reference points for all environmental calculations. | GeoDataFrame (in-memory, notebook 1) |
+| **Environmental data** | Daily meteorological records (air temperature, surface solar radiation) retrieved from the **NASA POWER Project API** (`https://power.larc.nasa.gov`) per municipality centroid. Sunrise and sunset times computed from centroid coordinates using the `astral` library. During data collection, mean photoperiod was 12.11 ± 0.23 h (annual amplitude ~44 min) and mean air temperature was 27.0 ± 1.1 °C. | JSON → DataFrame (notebook 1) |
+
+---
+
+### 📐 Derived Actigraphy Metrics
+
+All metrics below are computed from the raw actigraphy signals using `pyActigraphy`. Variables are extracted per participant across the full valid recording period.
 
 ### Stability
 
